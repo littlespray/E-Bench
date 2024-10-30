@@ -30,7 +30,7 @@ Left: Average score distributions of 8 editing methods. &emsp; &emsp; Right: Per
 </div>
 
 ## 💼 Model Preparation
-Download all models from [google drive]() and put them into ``ckpts``.
+Download all models from [google drive](https://drive.google.com/drive/folders/1kD82Ex90VP9A_AqjYV1J5DYvBQW-hkXa?usp=sharing) and put them into ``ckpts``.
 
 ## ✨ Usage
 ### Evaluate one single video
