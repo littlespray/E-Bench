@@ -1,0 +1,56 @@
+name: e-bench-blip-test
+num_epochs: 0
+l_num_epochs: 20
+warmup_epochs: 2.5
+ema: true
+save_model: true
+batch_size: 8
+num_workers: 6
+split_seed: 42 #useless
+
+wandb:
+    project_name: e-bench-blip-test
+
+data:   
+    videoQA:
+        type: ViewDecompositionDataset
+        args:
+            weight: 0.443
+            phase: train
+            anno_file: ../e-bench-db/label.txt
+            data_prefix: ../e-bench-db/edited
+            sample_types:
+                time:
+                    size_h: 224
+                    size_w: 224
+                    clip_len: 16
+                    frame_interval: 1
+                    t_frag: 16
+                    num_clips: 1
+
+model:
+    type: VideoTextAlignmentModel
+    args:
+        backbone:
+            time:
+                #in_channels: 768
+                type: blip
+                pretrained: true
+                checkpoint: true
+                blip_type: multimodal_text
+            
+        backbone_preserve_keys: time
+        divide_head: true
+        use_tn: true
+        vqa_head:
+            #in_channels: 768
+            hidden_channels: 64
+            attn_pool3d: true # 代码里默认为false
+            text_pool3d: false
+            
+optimizer:
+    lr: !!float 6.25e-4
+    backbone_lr_mult: !!float 1e-1
+    wd: 0.05
+        
+test_load_path: [./ckpts/e-bench-blip_head_videoQA_9_eval_s_finetuned.pth]

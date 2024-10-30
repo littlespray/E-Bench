@@ -1,0 +1,73 @@
+name: e-bench-dover-test
+num_epochs: 20
+l_num_epochs: 40
+warmup_epochs: 2.5
+ema: true
+save_model: true
+batch_size: 8
+num_workers: 6
+split_seed: 42 #useless
+
+wandb:
+    project_name: e-bench-dover-test
+
+data:   
+    videoQA:
+        type: ViewDecompositionDataset
+        args:
+            weight: 0.443
+            phase: train
+            anno_file: ../e-bench-db/label.txt
+            data_prefix: ../e-bench-db/edited
+            sample_types:
+                technical:
+                    fragments_h: 7
+                    fragments_w: 7
+                    fsize_h: 32
+                    fsize_w: 32
+                    aligned: 32
+                    clip_len: 32
+                    frame_interval: 1
+                    num_clips: 1
+                aesthetic:
+                    size_h: 224
+                    size_w: 224
+                    clip_len: 32
+                    frame_interval: 1
+                    t_frag: 32
+                    num_clips: 1
+#                 time:
+#                     size_h: 224
+#                     size_w: 224
+#                     clip_len: 16
+#                     frame_interval: 1
+#                     t_frag: 16
+#                     num_clips: 1
+
+model:
+    type: DOVER
+    args:
+        backbone:
+            technical:
+                type: swin_tiny_grpb
+                checkpoint: true
+                pretrained:
+            aesthetic:
+                type: conv_tiny
+                pretrained: true # 代码里默认为True
+                in22k: false # 代码里默认为False
+            
+        backbone_preserve_keys: technical,aesthetic
+        divide_head: true
+        vqa_head:
+            #in_channels: 768
+            hidden_channels: 64
+            attn_pool3d: true # 代码里默认为false
+            text_pool3d: false
+            
+optimizer:
+    lr: !!float 6.25e-4
+    backbone_lr_mult: !!float 1e-1
+    wd: 0.05
+        
+test_load_path: [./ckpts/e-bench-dover_head_videoQA_0_eval_n_finetuned.pth]
