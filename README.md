@@ -1,4 +1,4 @@
-# [\[AAAI 25\] E-Bench: Subjective-Aligned Benchmark Suite for Text-Driven Video Editing Quality Assessment](https://arxiv.org/abs/2408.11481)
+# [\[AAAI 25\] VE-Bench: Subjective-Aligned Benchmark Suite for Text-Driven Video Editing Quality Assessment](https://arxiv.org/abs/2408.11481)
 
 <div align="center">
 Shangkun Sun, Xiaoyu Liang, Songlin Fan, Wenxu Gao, Wei Gao* <br>
@@ -13,7 +13,7 @@ from MMCAL, Peking University
 </div>
 
 ## 🎦 Introduction
-TL;DR: E-Bench is an evaluation suite for text-driven video editing, consisting of a quality assessment model to provide a human-aligned metric for edited videos, and a database containing rich video-prompt pairs and the corresponding human scores.
+TL;DR: VE-Bench is an evaluation suite for text-driven video editing, consisting of a quality assessment model to provide a human-aligned metric for edited videos, and a database containing rich video-prompt pairs and the corresponding human scores.
 
 <div align="center">
 <img src="assets/overview.jpg" width = 50% height = 50%/>
@@ -21,7 +21,7 @@ TL;DR: E-Bench is an evaluation suite for text-driven video editing, consisting 
 Overview of the E-Bench Suite
 </div>
 
-E-Bench DB contains a rich collection of source videos, including real-world videos, AIGC videos, and CG videos, covering various aspects such as people, objects, animals, and landscapes. It also includes a variety of editing instructions across different categories, including semantic editing like addition, removal, replacement, etc., as well as structural changes in size, shape, etc., and stylizations such as color, texture, etc. Additionally, it features editing results based on different video editing models. We conducted a subjective experiment involving 24 participants from diverse backgrounds, resulting in 28,080 score samples. We further trained E-Bench QA model based on this data. The left image below shows the box plot of average scores obtained by each model during the subjective experiment, while the right image illustrates the scores for each model across different types of prompts.
+VE-Bench DB contains a rich collection of source videos, including real-world videos, AIGC videos, and CG videos, covering various aspects such as people, objects, animals, and landscapes. It also includes a variety of editing instructions across different categories, including semantic editing like addition, removal, replacement, etc., as well as structural changes in size, shape, etc., and stylizations such as color, texture, etc. Additionally, it features editing results based on different video editing models. We conducted a subjective experiment involving 24 participants from diverse backgrounds, resulting in 28,080 score samples. We further trained E-Bench QA model based on this data. The left image below shows the box plot of average scores obtained by each model during the subjective experiment, while the right image illustrates the scores for each model across different types of prompts.
 
 <div align="center">
 <img src="assets/scores.jpg" width = 70% height = 70%/>
@@ -59,7 +59,7 @@ If your have any comments or questions, feel free to contact [sunshk@stu.pku.edu
 ## 📖 BibTex
 ```bibtex
 @article{sun2024bench,
-  title={E-Bench: Subjective-Aligned Benchmark Suite for Text-Driven Video Editing Quality Assessment},
+  title={VE-Bench: Subjective-Aligned Benchmark Suite for Text-Driven Video Editing Quality Assessment},
   author={Sun, Shangkun and Liang, Xiaoyu and Fan, Songlin and Gao, Wenxu and Gao, Wei},
   journal={arXiv preprint arXiv:2408.11481},
   year={2024}
