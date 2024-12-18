@@ -6,6 +6,11 @@ from preprocess import Processor
 import yaml
 import argparse
 
+#fixed seed
+seed_n = 42
+print('seed is ' + str(seed_n))
+torch.manual_seed(seed_n)
+
 device='cuda'
 class EBenchModel(nn.Module):
     def __init__(self):
